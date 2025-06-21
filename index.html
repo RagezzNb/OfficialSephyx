@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEPHYX - Drip Designed for the Future</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>𖤐</text></svg>">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor">
+        <div class="cursor-ring"></div>
+        <div class="cursor-particles"></div>
+    </div>
+    
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">𖤐</div>
+            <div class="loader-text">SEPHYX SYSTEM BOOTING...</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-symbol">𖤐</span>
+                <span class="logo-text">SEPHYX</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">HOME</a></li>
+                <li><a href="#shop" class="nav-link">SHOP</a></li>
+                <li><a href="#fits" class="nav-link">SAVED FITS</a></li>
+                <li><a href="#vault" class="nav-link">VAULT</a></li>
+                <li><a href="#lookbook" class="nav-link">LOOKBOOK</a></li>
+                <li><a href="#account" class="nav-link">ACCOUNT</a></li>
+                <li><a href="#contact" class="nav-link">CONTACT</a></li>
+            </ul>
+            <div class="nav-cart">
+                <button class="cart-btn" id="cartBtn">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Background Particles -->
+        <div class="bg-particles" id="bgParticles"></div>
+        
+        <!-- Homepage -->
+        <section class="page active" id="home">
+            <div class="hero">
+                <div class="hero-bg">
+                    <img src="https://pixabay.com/get/gaca03e6da661a5659c49fe7cbae953082271a300ce54994f51a83c2458fbfae8b12cf0dec5cc0dc5222935cedc1ac6ebb151627fa6dc7523fab0d7f6f7e59f7a_1280.jpg" alt="Cyberpunk Background" class="hero-bg-img">
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="hero-content">
+                    <div class="glitch-text-container">
+                        <div class="glitch-text">𖤐 SEPHYX SIGNAL ACTIVE</div>
+                        <div class="glitch-text">𖤐 YOU ARE BEING WATCHED</div>
+                        <div class="glitch-text">𖤐 CULT TRANSMISSION DETECTED</div>
+                    </div>
+                    <h1 class="hero-title">DRIP DESIGNED FOR THE FUTURE.</h1>
+                    <p class="hero-subtitle">Built to outlast the algorithm.</p>
+                    <button class="hero-cta" id="enterVaultBtn">ENTER THE VAULT</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Shop -->
+        <section class="page" id="shop">
+            <div class="shop-container">
+                <div class="shop-header">
+                    <h1 class="page-title">SHOP</h1>
+                    <div class="shop-badge">Available only in Qatar – Cash on Delivery</div>
+                </div>
+                <div class="shop-filters">
+                    <button class="filter-chip active" data-filter="all">ALL</button>
+                    <button class="filter-chip" data-filter="hoodies">HOODIES</button>
+                    <button class="filter-chip" data-filter="tees">TEES</button>
+                    <button class="filter-chip" data-filter="accessories">ACCESSORIES</button>
+                </div>
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Saved Fits -->
+        <section class="page" id="fits">
+            <div class="fits-container">
+                <div class="fits-header">
+                    <h1 class="page-title">SAVED FITS</h1>
+                    <p class="fits-subtitle">Keep your drip locked 'til payday.</p>
+                </div>
+                <div class="outfit-generator">
+                    <button class="gen-btn" id="randomizeBtn">RANDOMIZE FIT</button>
+                    <button class="gen-btn" id="saveFitBtn">SAVE FIT</button>
+                    <button class="gen-btn" id="copyDripBtn">COPY DRIP STRING</button>
+                </div>
+                <div class="saved-fits-grid" id="savedFitsGrid">
+                    <!-- Saved fits will be loaded here -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Vault -->
+        <section class="page" id="vault">
+            <div class="vault-container">
+                <div class="vault-locked" id="vaultLocked">
+                    <div class="vault-lock">
+                        <div class="lock-icon">🔐</div>
+                        <h2>VAULT ACCESS REQUIRED</h2>
+                        <input type="password" class="vault-password" id="vaultPassword" placeholder="Enter passcode...">
+                        <button class="vault-unlock" id="vaultUnlock">UNLOCK</button>
+                    </div>
+                </div>
+                <div class="vault-content hidden" id="vaultContent">
+                    <h1 class="page-title">THE VAULT</h1>
+                    <div class="vault-countdown">
+                        <div class="countdown-text">NEXT DROP IN:</div>
+                        <div class="countdown-timer" id="countdownTimer">12D:03H:22M</div>
+                    </div>
+                    <div class="vault-previews">
+                        <div class="preview-item">
+                            <div class="preview-blackout"></div>
+                            <div class="preview-title">SHADOW COLLECTION</div>
+                        </div>
+                        <div class="preview-item">
+                            <div class="preview-blackout"></div>
+                            <div class="preview-title">NEON ARTIFACTS</div>
+                        </div>
+                    </div>
+                    <div class="vault-downloads">
+                        <a href="#" class="download-btn">DOWNLOAD WALLPAPERS</a>
+                        <a href="#" class="download-btn">AR FILTER PACK</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Lookbook -->
+        <section class="page" id="lookbook">
+            <div class="lookbook-container">
+                <h1 class="page-title">LOOKBOOK</h1>
+                <div class="lookbook-chapters">
+                    <div class="chapter" data-chapter="afterlight">
+                        <div class="chapter-bg">
+                            <img src="https://pixabay.com/get/gab8d4d96f113b565344d8d994209f2a7a6090731e0589ea0b7eb0b1ea9f3ac363fe353f52aa286d47df167c11753cebb9fdac145dba7f107059caeb7024918f1_1280.jpg" alt="Afterlight">
+                        </div>
+                        <div class="chapter-content">
+                            <h2 class="chapter-title">AFTERLIGHT</h2>
+                            <p class="chapter-desc">Post-apocalyptic elegance meets street rebellion</p>
+                        </div>
+                    </div>
+                    <div class="chapter" data-chapter="drift">
+                        <div class="chapter-bg">
+                            <img src="https://pixabay.com/get/g58942d5af06562f8e1f2c5844c38694000f4299db9a7c74459b503f8dd0c8dc7d231d19b72654fd8a00847687b534e018b6a08362287c20db25772555cf34ef8_1280.jpg" alt="Drift Mode">
+                        </div>
+                        <div class="chapter-content">
+                            <h2 class="chapter-title">DRIFT MODE</h2>
+                            <p class="chapter-desc">Ethereal forms in digital landscapes</p>
+                        </div>
+                    </div>
+                    <div class="chapter" data-chapter="punk">
+                        <div class="chapter-bg">
+                            <img src="https://pixabay.com/get/g9aebecadf048454940e4f6ed9f1a7749c31450625a907964d0ce40e2ce2f7356fc438ac954a73ef53c815d8bbfab45567f7c110435ed5fcd014b6486ca2cc610_1280.jpg" alt="Punk.exe">
+                        </div>
+                        <div class="chapter-content">
+                            <h2 class="chapter-title">PUNK.EXE</h2>
+                            <p class="chapter-desc">Raw digital energy in wearable form</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Account -->
+        <section class="page" id="account">
+            <div class="account-container">
+                <h1 class="page-title">PROFILE</h1>
+                <div class="profile-editor">
+                    <div class="profile-avatar">
+                        <div class="avatar-frame" id="avatarFrame">
+                            <div class="avatar-img">👤</div>
+                        </div>
+                        <button class="avatar-change">CHANGE AVATAR</button>
+                    </div>
+                    <div class="profile-info">
+                        <input type="text" class="profile-input" id="username" placeholder="USERNAME">
+                        <textarea class="profile-input" id="bio" placeholder="BIO"></textarea>
+                        <div class="style-tags">
+                            <span class="tag">CYBERPUNK</span>
+                            <span class="tag">STREETWEAR</span>
+                            <span class="tag">MINIMALIST</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="loyalty-badges">
+                    <div class="badge" data-badge="starter">
+                        <div class="badge-icon">🔰</div>
+                        <div class="badge-name">STREET STARTER</div>
+                    </div>
+                    <div class="badge" data-badge="dealer">
+                        <div class="badge-icon">💎</div>
+                        <div class="badge-name">DRIP DEALER</div>
+                    </div>
+                    <div class="badge" data-badge="saint">
+                        <div class="badge-icon">👑</div>
+                        <div class="badge-name">SEPHYX SAINT</div>
+                    </div>
+                </div>
+                <div class="drip-diary">
+                    <h3>DRIP DIARY</h3>
+                    <div class="diary-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">TODAY</div>
+                            <div class="timeline-event">Joined the cult</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2 DAYS AGO</div>
+                            <div class="timeline-event">First vault access</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact -->
+        <section class="page" id="contact">
+            <div class="contact-container">
+                <h1 class="page-title">CONTACT</h1>
+                <div class="contact-content">
+                    <div class="contact-section">
+                        <h3>REACH OUT</h3>
+                        <div class="contact-qr">
+                            <div class="qr-code">📱</div>
+                            <p>Scan to DM us on Instagram</p>
+                            <a href="https://instagram.com/SephyxOfficial" target="_blank" class="instagram-link">@SephyxOfficial</a>
+                        </div>
+                    </div>
+                    <div class="contact-section">
+                        <h3>ORDER TRACKING</h3>
+                        <div class="tracking-stages">
+                            <div class="stage active">
+                                <div class="stage-icon">📦</div>
+                                <div class="stage-text">Out for delivery.</div>
+                            </div>
+                            <div class="stage">
+                                <div class="stage-icon">🕐</div>
+                                <div class="stage-text">ETA: Tonight.</div>
+                            </div>
+                            <div class="stage">
+                                <div class="stage-icon">💰</div>
+                                <div class="stage-text">COD: Get ready.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>CART</h3>
+            <button class="cart-close" id="cartClose">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total" id="cartTotal">TOTAL: QR 0</div>
+            <button class="checkout-btn" id="checkoutBtn">CHECKOUT</button>
+        </div>
+    </div>
+    
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-toggle" id="chatbotToggle">
+            <div class="chatbot-orb">💬</div>
+        </div>
+        <div class="chatbot-window hidden" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h4>SEPHYX ASSISTANT</h4>
+                <button class="chatbot-minimize" id="chatbotMinimize">−</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot">
+                    <div class="message-text">SYBAU king, what fit you looking for today? 💀</div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your message...">
+                <button id="chatbotSend">SEND</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="data/products.js"></script>
+    <script src="data/chatbot-responses.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="js/savedFits.js"></script>
+    <script src="js/vault.js"></script>
+    <script src="js/account.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/cyberpunk-features.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
